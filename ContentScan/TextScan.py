@@ -90,6 +90,18 @@ if __name__ == "__main__":
     clt = connect.get_config()
     request = connect.connect()
 
-    path = r'bad_1.txt'
-    result_para = TextScan(filename=path).get_result(request,clt)
+    ##read one file
+    path = ''
+    result_para = TextScan(filename = path).get_result(request, clt)
+    ##read one sentence
+    text1 = """"""
+    result_para = TextScan(text = text1).get_result(request,clt)
+    ##read all files from one folder
+    path = r''
+    filenames = printPath(1,path)
+    for i in range(0,len(filenames)):
+        file_now = '' + filenames[i]
+        result_para = TextScan(filename = file_now).get_result(request, clt)
+        i += 1
+        print result_para
 
