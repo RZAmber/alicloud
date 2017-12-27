@@ -67,16 +67,16 @@ class ImageScan:
         result = self.__run(reqeust,clt)
         if 200 == result["code"]:
             taskResults = result["data"]
+            i = 1
             for taskResult in taskResults:
                 if (200 == taskResult["code"]):
                     sceneResults = taskResult["results"]
-
                     for sceneResult in sceneResults:
                         scene = sceneResult["scene"]
                         suggestion = sceneResult["suggestion"]
                         label = sceneResult["label"]
-                        print "{'scene':%s,'label':%s,'suggestion':%s}" % (scene, label, suggestion)
-
+                        print "Picture %d: {'scene':%s,'label':%s,'suggestion':%s}" % (i, scene, label, suggestion)
+                i += 1
 
 
 
@@ -88,4 +88,6 @@ if __name__ == "__main__":
     url = ['http://pic33.photophoto.cn/20141221/0017030088228544_b.jpg','http://pic33.photophoto.cn/20141221/0017030088228544_b.jpg']
     ImageScan(urls = url).get_result(request, clt)
     end = time.time()
-    print(end - start)
+    print "-------------------------"
+    print "running time:" ,(end - start)
+
